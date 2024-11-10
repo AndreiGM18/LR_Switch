@@ -1,0 +1,35 @@
+1 2 3 (toate)
+
+# Switch Implementation
+
+**Name: Mitran Andrei-Gabriel**
+**Group: 333CA**
+
+## Organization
+
+* The switch can handle forwarding with learning, and has support for VLANs and
+STP.
+
+## Implementation
+
+* Forwarding with learning and STP are done with the algorithms provided by the
+team.
+* When it comes to how the MAC table and VLAN associations of each port are
+stored, it is done using two dictionaries.
+* A trunk port is marked with sys.maxsize.
+* Every time a packet comes from an access port, the switch tags it and removes
+it only if it is sent to another access port.
+* When handling BPDU packets, a custom packet is sent that simply contains an
+indetifier (int: 25), root_bridge_id, sender_bridge_id and sender_path_cost,
+the latter 3 having being described in the pseudocode.
+* I only send BPDU packets when the switch is root. If the switch learns that
+it is not in fact root, I signal the thread to stop, as no switches are turned
+off.
+
+### Compilation
+
+* Code is written in Python, therefore it is not needed.
+
+### Resources
+
+* Everything provided by the RL team
